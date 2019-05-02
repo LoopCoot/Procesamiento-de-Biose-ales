@@ -1,0 +1,17 @@
+clc;
+close all;
+for i=0:9
+    
+    %Wn=200;
+    fc=200;
+    fs=2*20
+    Wn=fc/fs;
+    [num,den]=butter(i,Wn,'high');
+    sys = tf(num,den,1)
+    [h,w]=freqz(num,den);
+    figure(1)
+    plot(w,abs(h)),tittle('Respuesta del filtro')
+    hold on 
+    pause (1)
+end 
+hold off
